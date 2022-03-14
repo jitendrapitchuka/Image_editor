@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block content%}
+<form method="POST">
+    {%csrf_token%}
+    <h1>upload image here</h1>
+    <label for="myfile1">Choose your first image</label>
+            <input type="file" id="myfile1" name="myfile1"><br><br>
+
+            <label for="myfile2">Choose your second image</label>
+
+          
+            <input type="file" id="myfile2" name="myfile2" ><br><br>
+    
+    <input type="submit" class="btn btn-primary" value="submit">
+    
+    </form>
+
+{%endblock%}
