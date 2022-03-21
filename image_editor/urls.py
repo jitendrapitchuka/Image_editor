@@ -18,6 +18,7 @@ from django.urls import path,include
 from my_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name='index'),
-    path('meme/',views.meme,name='meme')
+   
+    path('meme/',views.meme,name='meme'),
+    path('',views.index,name='index')
 ]

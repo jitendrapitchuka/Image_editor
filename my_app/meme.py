@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os
 def meme(image1,image2):
     img1=cv2.imread(image1)
     img2=cv2.imread(image2)
@@ -35,5 +36,7 @@ def meme(image1,image2):
 
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-        cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/image_editor/my_app/static/media/final.png',dst)
-    return "/home/jitendra/learning/github_repos/django_projects/image_editor/my_app/static/media/final.png"
+        cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/media/final.png',dst)
+    return "/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/media/final.png"
+
+    
