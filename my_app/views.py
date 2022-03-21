@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-from my_app.meme import meme
+from my_app.meme import meme_gen
 import os
 # Create your views here.
 
@@ -30,10 +30,18 @@ def meme(request):
             filename = fs.save(file_path, request.FILES[file_name])
 
           
-        img_path= meme(file_paths[0],file_paths[1])
+        img_path= meme_gen(*file_paths)
+        print(img_path)
         try:
-            with open(img_path, "rb") as f:
-                return HttpResponse(f.read(), content_type="image/jpeg")
+            # with open(img_path, "rb") as f:
+            myfile=file_paths[0]
+            if os.path.isfile(myfile):
+                os.remove(myfile)
+                os.remove(file_paths[1])
+                    
+                    
+            return HttpResponse(f.read(), content_type="image/jpeg")
+            #return render(request,'output.html',{'img_path':img_path})
         except IOError:
             return render(request,'meme.html')
     return render(request,'meme.html')
