@@ -33,14 +33,14 @@ def meme(request):
         img_path= meme_gen(*file_paths)
         print(img_path)
         try:
-            # with open(img_path, "rb") as f:
-            myfile=file_paths[0]
-            if os.path.isfile(myfile):
-                os.remove(myfile)
-                os.remove(file_paths[1])
+            with open(img_path, "rb") as f:
+                myfile=file_paths[0]
+                if os.path.isfile(myfile):
+                    os.remove(myfile)
+                    os.remove(file_paths[1])
                     
                     
-            return HttpResponse(f.read(), content_type="image/jpeg")
+                return HttpResponse(f.read(), content_type="image/jpeg")
             #return render(request,'output.html',{'img_path':img_path})
         except IOError:
             return render(request,'meme.html')
@@ -48,3 +48,25 @@ def meme(request):
 
 def index(request):
      return render(request,'index.html')
+
+# def output_meme(request):
+#     def click_event1(event,x,y,flags,param):
+#         if event==cv2.EVENT_LBUTTONDOWN:
+#             text="hello this a text1"
+#             font = cv2.FONT_HERSHEY_SIMPLEX
+#             color = (255, 255, 255)
+#             fontScale = 1
+            
+#             cv2.putText(adding,text,(x,y),font,fontScale,color)
+#             cv2.imshow('image',adding)
+
+
+#         if event==cv2.EVENT_RBUTTONDOWN:
+#             text="hello this a text2"
+#             font = cv2.FONT_HERSHEY_SIMPLEX
+#             color = (255, 255, 255)
+#             fontScale = 1
+#             cv2.putText(adding,text,(x,y),font,fontScale,color)
+#             cv2.imshow('image',adding)
+#     cv2.setMouseCallback('image',click_event1)
+#     return render(request,'ouput_meme.html')

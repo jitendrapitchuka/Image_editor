@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
    
     path('meme/',views.meme,name='meme'),
-    path('',views.index,name='index')
+    path('',views.index,name='index'),
+    #path('output_meme',views.output_meme,name="meme_output")
 ]
