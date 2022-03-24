@@ -6,17 +6,20 @@ from my_app.meme import meme_gen
 import os
 # Create your views here.
 
-
-
-
 def meme(request):
     
     if(request.method=='POST'):
         print(request.POST)
+        file1_input=request.POST.get('file1_input')
+        file2_input=request.POST.get('file2_input')
+        colour1_input=request.POST.get('colour1_input')
+        
+        colour2_input=request.POST.get('colour2_input')
         
         fs = FileSystemStorage()
        
         file_paths = []
+        print(request.FILES)
         for file_name in request.FILES:
             
             upload_file = request.FILES[file_name]
@@ -29,8 +32,16 @@ def meme(request):
             print(file_paths)
             filename = fs.save(file_path, request.FILES[file_name])
 
-          
-        img_path= meme_gen(*file_paths)
+        if(colour1_input=="black" and colour2_input=="black"):
+            img_path= meme_gen(*file_paths,file1_input,file2_input,colour1_input,colour2_input)
+        if(colour1_input=="white" and colour2_input=="white"):
+            img_path= meme_gen(*file_paths,file1_input,file2_input,colour1_input,colour2_input)
+        if(colour1_input=="white" and colour2_input=="black"):
+            img_path= meme_gen(*file_paths,file1_input,file2_input,colour1_input,colour2_input)
+        if(colour1_input=="black" and colour2_input=="white"):
+            img_path= meme_gen(*file_paths,file1_input,file2_input,colour1_input,colour2_input)
+       
+        
         print(img_path)
         try:
             with open(img_path, "rb") as f:
@@ -49,24 +60,3 @@ def meme(request):
 def index(request):
      return render(request,'index.html')
 
-# def output_meme(request):
-#     def click_event1(event,x,y,flags,param):
-#         if event==cv2.EVENT_LBUTTONDOWN:
-#             text="hello this a text1"
-#             font = cv2.FONT_HERSHEY_SIMPLEX
-#             color = (255, 255, 255)
-#             fontScale = 1
-            
-#             cv2.putText(adding,text,(x,y),font,fontScale,color)
-#             cv2.imshow('image',adding)
-
-
-#         if event==cv2.EVENT_RBUTTONDOWN:
-#             text="hello this a text2"
-#             font = cv2.FONT_HERSHEY_SIMPLEX
-#             color = (255, 255, 255)
-#             fontScale = 1
-#             cv2.putText(adding,text,(x,y),font,fontScale,color)
-#             cv2.imshow('image',adding)
-#     cv2.setMouseCallback('image',click_event1)
-#     return render(request,'ouput_meme.html')
