@@ -21,6 +21,7 @@ urlpatterns = [
    
     path('meme/',views.meme,name='meme'),
     path('histogram/',views.histogram,name='histogram'),
+    path('his/',views.histrgb,name='his'),
     path('',views.index,name='index'),
     #path('output_meme',views.output_meme,name="meme_output")
 ]
