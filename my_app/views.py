@@ -8,6 +8,8 @@ from my_app.histogramrgb import his
 import os
 # Create your views here.
 
+
+
 def meme(request):
     
     if(request.method=='POST'):
