@@ -23,5 +23,7 @@ urlpatterns = [
     path('histogram/',views.histogram,name='histogram'),
     path('his/',views.histrgb,name='his'),
     path('',views.index,name='index'),
+    path('reseize/',views.resize,name='resize'),
+  
     #path('output_meme',views.output_meme,name="meme_output")
 ]

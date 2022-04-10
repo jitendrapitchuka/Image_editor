@@ -5,6 +5,7 @@ from django.conf import settings
 from my_app.meme import meme_gen
 from my_app.histogram import histogrameq
 from my_app.histogramrgb import his
+from my_app.resize import size
 import os
 # Create your views here.
 
@@ -122,4 +123,46 @@ def histrgb(request):
         except IOError:
             return render(request,'his.html')
     return render(request,'his.html')
+
+
+def resize(request):
+    if(request.method=='POST'):
+       
+        file1_width=request.POST.get('file1_width')
+        file1_height=request.POST.get('file1_height')
+        fs = FileSystemStorage()
+       
+        file_paths = []
+        
+        for file_name in request.FILES:
+            upload_file = request.FILES[file_name]
+            extension = os.path.splitext(upload_file.name)[1]
+            file_path = os.path.join(settings.MEDIA_ROOT_URL, file_name + extension)
+            file_paths.append(file_path)
+            filename = fs.save(file_path, request.FILES[file_name])
+        img_path= size(*file_paths,file1_width,file1_height)
+        myfile=file_paths[0]
+        if os.path.isfile(myfile):
+            os.remove(myfile)
+        # path='/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/static/final.png'
+        # image_path = os.path.basename(path)
+       
+        return render(request, 'output.html')
+        
+
+    return render(request, 'resize.html')
+
+    #     try:
+    #         with open(img_path, "rb") as f:
+    #             myfile=file_paths[0]
+    #             if os.path.isfile(myfile):
+    #                 os.remove(myfile)
+                    
+                
+                  
+    #             return HttpResponse(f.read(), content_type="image/jpeg")
+           
+    #     except IOError:
+    #         return render(request,'resize.html')
+    # return render(request,'resize.html')
 
