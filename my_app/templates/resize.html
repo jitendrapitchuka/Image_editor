@@ -2,7 +2,9 @@
 {%block content%}
 <form method="POST" enctype="multipart/form-data" >
     {%csrf_token%}
-    <h1>upload image here</h1>
+    <center>
+    <div style="margin-top: 10%;">
+    <h1>Upload your image here</h1><br>
     <label for="myfile1">Choose your  image</label>
             <input type="file" id="myfile1" name="myfile1"><br><br>
             <input type="text" name="file1_width" placeholder="width"><br><br>
@@ -11,7 +13,7 @@
 
            
     <input type="submit" class="btn btn-primary" value="submit">
-    
+</div></center> 
     </form>
 
 {%endblock%}
