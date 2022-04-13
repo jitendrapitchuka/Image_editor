@@ -58,7 +58,7 @@ def histogrameq(image):
 
 
 
+    cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/static/input.png',img)
 
-
-    cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/media/final.png',img2)
-    return "/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/media/final.png"
+    cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/static/final.png',img2)
+    # return "/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/static/final.png"

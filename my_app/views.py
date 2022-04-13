@@ -81,18 +81,14 @@ def histogram(request):
             file_paths.append(file_path)
             filename = fs.save(file_path, request.FILES[file_name])
         img_path= histogrameq(*file_paths)
-        try:
-            with open(img_path, "rb") as f:
-                myfile=file_paths[0]
-                if os.path.isfile(myfile):
-                    os.remove(myfile)
+        
+        myfile=file_paths[0]
+        if os.path.isfile(myfile):
+            os.remove(myfile)
+        temp=1 
+        return render(request, 'output.html',{'temp':temp})        
                     
-                    
-                    
-                return HttpResponse(f.read(), content_type="image/jpeg")
-            #return render(request,'output.html',{'img_path':img_path})
-        except IOError:
-            return render(request,'histogram.html')
+              
     return render(request,'histogram.html')
 
 def histrgb(request):
@@ -110,18 +106,16 @@ def histrgb(request):
             file_paths.append(file_path)
             filename = fs.save(file_path, request.FILES[file_name])
         img_path= his(*file_paths)
-        try:
-            with open(img_path, "rb") as f:
-                myfile=file_paths[0]
-                if os.path.isfile(myfile):
-                    os.remove(myfile)
+        
+        myfile=file_paths[0]
+        if os.path.isfile(myfile):
+            os.remove(myfile)
+        temp=1;            
+        return render(request,'output.html',{'temp':temp})
+         
                     
-                    
-                    
-                return HttpResponse(f.read(), content_type="image/jpeg")
-           
-        except IOError:
-            return render(request,'his.html')
+               
+          
     return render(request,'his.html')
 
 

@@ -3,13 +3,19 @@
 {%load static%}
 
 
-<div style="margin-top:20% ;margin-right: 20% ;">    
+<div style="margin-top:20% ;margin: auto ;">    
   <center> 
-    <p>Click on the image to download<p>
-        <a href="" download>
+   
+    {%if temp%}
+    <h1>Input image</h1><br>
+
+    <img src="{% static 'input.png' %}" alt="input image">
+
+    {%endif%}
+    <h1>Output image</h1><br>
         <img src="{% static 'final.png' %}" alt="final image">
     
-</a>
+
 </center> 
 </div>
 
