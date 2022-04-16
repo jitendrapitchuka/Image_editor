@@ -43,7 +43,8 @@ def meme_gen(image1,image2,file1_input,file2_input,colour1_input,colour2_input):
     
     # cv2.waitKey(10)
     # cv2.destroyAllWindows()
-    cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/media/final.png',adding)
-    return "/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/media/final.png"
+    
+    cv2.imwrite('/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/static/final.png',adding)
+    return "/home/jitendra/learning/github_repos/django_projects/Image_editor/my_app/static/final.png"
 
     

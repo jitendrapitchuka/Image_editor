@@ -49,18 +49,15 @@ def meme(request):
        
         
         print(img_path)
-        try:
-            with open(img_path, "rb") as f:
-                myfile=file_paths[0]
-                if os.path.isfile(myfile):
-                    os.remove(myfile)
-                    os.remove(file_paths[1])
+        
+        myfile=file_paths[0]
+        if os.path.isfile(myfile):
+            os.remove(myfile)
+            os.remove(file_paths[1])
                     
                     
-                return HttpResponse(f.read(), content_type="image/jpeg")
-            #return render(request,'output.html',{'img_path':img_path})
-        except IOError:
-            return render(request,'meme.html')
+            
+        return render(request,'output.html')
     return render(request,'meme.html')
 
 def index(request):
