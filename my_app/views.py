@@ -6,6 +6,7 @@ from my_app.meme import meme_gen
 from my_app.histogram import histogrameq
 from my_app.histogramrgb import his
 from my_app.resize import size
+from my_app.filter import filter_conv
 import os
 # Create your views here.
 
@@ -146,17 +147,32 @@ def resize(request):
 
     return render(request, 'resize.html')
 
-    #     try:
-    #         with open(img_path, "rb") as f:
-    #             myfile=file_paths[0]
-    #             if os.path.isfile(myfile):
-    #                 os.remove(myfile)
-                    
-                
-                  
-    #             return HttpResponse(f.read(), content_type="image/jpeg")
-           
-    #     except IOError:
-    #         return render(request,'resize.html')
-    # return render(request,'resize.html')
+def filters(request):
+    if(request.method=='POST'):
+       
+        colour1_input=request.POST.get('colour1_input')
+        fs = FileSystemStorage()
+       
+        file_paths = []
+        
+        for file_name in request.FILES:
+            upload_file = request.FILES[file_name]
+            extension = os.path.splitext(upload_file.name)[1]
+            file_path = os.path.join(settings.MEDIA_ROOT_URL, file_name + extension)
+            file_paths.append(file_path)
+            filename = fs.save(file_path, request.FILES[file_name])
+        if(colour1_input=='gray'):
+            img_path= filter_conv(*file_paths,colour1_input)
+        if(colour1_input=='ycrcb'):
+            img_path= filter_conv(*file_paths,colour1_input)
+        myfile=file_paths[0]
+        if os.path.isfile(myfile):
+            os.remove(myfile)
+        temp=1
+        return render(request, 'output.html',{'temp':temp})
+        
+
+    return render(request, 'filter.html')
+
+  
 

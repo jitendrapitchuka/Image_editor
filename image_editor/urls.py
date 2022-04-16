@@ -24,6 +24,7 @@ urlpatterns = [
     path('his/',views.histrgb,name='his'),
     path('',views.index,name='index'),
     path('reseize/',views.resize,name='resize'),
+    path('filter/',views.filters,name='filters'),
   
     #path('output_meme',views.output_meme,name="meme_output")
 ]
