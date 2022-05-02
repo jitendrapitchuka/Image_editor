@@ -3,18 +3,18 @@
 ### First one need to install pip.
 
 ### STEP-1:- The command to install pip is 
-    ```sudo apt install python3-pip```
+    sudo apt install python3-pip
 
 
 ### After installation of pip ,need to install virtualenvironment from pip.
 
 
 ### STEP-2:- Command for installation of virtualenvironemt from pip is 
-    ```pip install virtualenv```
+    pip install virtualenv
 
 
 ### STEP-3:- Next need to create a virtual environment and naming it.Here in my case the name for virtualenvironemt is myenv     
-    ```python3 -m virtualenv myenv```
+    python3 -m virtualenv myenv
 
 
 ### STEP-4:- Activate the virtualenvironemt with this command ------------->   source my_env/bin/activate
