@@ -2,7 +2,8 @@
 
 ### First one need to install pip.
 
-### STEP-1:- The command to install pip is ------>  ```sudo apt install python3-pip```
+### STEP-1:- The command to install pip is ------>  
+    ```sudo apt install python3-pip```
 
 
 ### After installation of pip ,need to install virtualenvironment from pip.
